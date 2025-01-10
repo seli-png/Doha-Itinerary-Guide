@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doha Travel Guide</title>
+    <title>Interactive Map with Filters</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body {
@@ -29,37 +29,88 @@
             margin-top: 20px;
             border: 1px solid #ddd;
         }
+
+        .filter-buttons {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .filter-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <h1>Welcome to Doha Travel Guide</h1>
+        <h1>Interactive Map with Filters</h1>
     </header>
 
-    <!-- Text Content -->
     <section>
-        <p>Discover the beauty of Doha with this guide! Below, you’ll find an interactive map to help you plan your visit.</p>
-
-        <h2>Highlights</h2>
-        <ul>
-            <li>Explore the iconic Museum of Islamic Art.</li>
-            <li>Enjoy a walk along the Corniche.</li>
-            <li>Visit the vibrant Souq Waqif.</li>
-        </ul>
+        <p>Use the buttons below to filter locations like supermarkets, embassies, and hospitals on the map.</p>
     </section>
 
-    <!-- Map Section -->
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button onclick="showSupermarkets()">Supermarkets</button>
+        <button onclick="showEmbassies()">Embassies</button>
+        <button onclick="showHospitals()">Hospitals</button>
+        <button onclick="clearFilters()">Clear Filters</button>
+    </div>
+
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        const map = L.map('map').setView([25.276987, 51.520008], 10);
+        const map = L.map('map').setView([25.276987, 51.520008], 10);  // Qatar coordinates
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-        const marker = L.marker([25.276987, 51.520008]).addTo(map);
-        marker.bindPopup("<b>Doha</b><br>Capital of Qatar").openPopup();
+
+        // Create marker groups for each category
+        const supermarketsLayer = L.layerGroup().addTo(map);
+        const embassiesLayer = L.layerGroup().addTo(map);
+        const hospitalsLayer = L.layerGroup().addTo(map);
+
+        // Example Supermarkets
+        const supermarket1 = L.marker([25.276987, 51.520008]).bindPopup("Supermarket 1").addTo(supermarketsLayer);
+        const supermarket2 = L.marker([25.276789, 51.530008]).bindPopup("Supermarket 2").addTo(supermarketsLayer);
+
+        // Example Embassies
+        const embassy1 = L.marker([25.276987, 51.510008]).bindPopup("Embassy 1").addTo(embassiesLayer);
+        const embassy2 = L.marker([25.276589, 51.520988]).bindPopup("Embassy 2").addTo(embassiesLayer);
+
+        // Example Hospitals
+        const hospital1 = L.marker([25.270000, 51.520000]).bindPopup("Hospital 1").addTo(hospitalsLayer);
+        const hospital2 = L.marker([25.260000, 51.530000]).bindPopup("Hospital 2").addTo(hospitalsLayer);
+
+        // Filter Functions
+        function showSupermarkets() {
+            supermarketsLayer.addTo(map);
+            embassiesLayer.removeFrom(map);
+            hospitalsLayer.removeFrom(map);
+        }
+
+        function showEmbassies() {
+            supermarketsLayer.removeFrom(map);
+            embassiesLayer.addTo(map);
+            hospitalsLayer.removeFrom(map);
+        }
+
+        function showHospitals() {
+            supermarketsLayer.removeFrom(map);
+            embassiesLayer.removeFrom(map);
+            hospitalsLayer.addTo(map);
+        }
+
+        function clearFilters() {
+            supermarketsLayer.addTo(map);
+            embassiesLayer.addTo(map);
+            hospitalsLayer.addTo(map);
+        }
     </script>
 </body>
 </html>
