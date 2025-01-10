@@ -3,26 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Map of Qatar</title>
-    <!-- Link to Leaflet CSS (for map styling) -->
+    <title>Travel Guide to Doha</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        /* Make the map fill the whole browser window */
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        section {
+            padding: 20px;
+        }
+
         #map {
-            height: 100vh;  /* Full height of the screen */
-            width: 100%;    /* Full width of the screen */
+            height: 500px;
+            width: 100%;
+            margin-top: 20px;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
-    <!-- The div that will hold the map -->
-    <div id="map"></div>
+    <header>
+        <h1>Travel Guide to Doha</h1>
+    </header>
 
-    <!-- Link to Leaflet JavaScript (for map functionality) -->
+    <section>
+        <h2>Welcome</h2>
+        <p>Welcome to the travel guide for Doha! Explore the beautiful city with our interactive map and other resources.</p>
+        
+        <h2>Interactive Map</h2>
+        <p>Here is an embedded map to help you explore Doha:</p>
+
+        <div id="map"></div>
+    </section>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Initialize the map and set its view to Qatar's coordinates
-        const map = L.map('map').setView([25.276987, 51.520008], 10);  // Coordinates for Qatar
+        const map = L.map('map').setView([25.276987, 51.520008], 10);
 
         // Add OpenStreetMap tiles as the base layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
