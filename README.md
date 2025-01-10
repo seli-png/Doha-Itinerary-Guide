@@ -18,6 +18,22 @@ touch index.html style.css script.js
 ![Doha Image](Doha.png)
 <a href="https://www.google.com" target="_blank">Go to Google</a>
 
-<p>Here is the map of Doha:</p>
+# Travel Guide to Doha
 
-<iframe src="https://seli-png.github.io/Doha-Itinerary-Guide/index.html" width="100%" height="500px"></iframe>
+Welcome to the travel guide for Doha! Explore the beautiful city with our interactive map and other resources.
+
+## Interactive Map
+
+Here is an embedded map to help you explore Doha:
+
+<iframe 
+    src="https://seli-png.github.io/Doha-Itinerary-Guide/" 
+    width="100%" 
+    height="500" 
+    style="border: 1px solid black;" 
+    title="Doha Interactive Map">
+</iframe>
+
+## Explore More
+
+Check out other sections of our guide for tips, attractions, and recommendations!
