@@ -1,5 +1,9 @@
 git clone <repository-url>
 cd <your-repository-folder>
+mkdir interactive-map
+cd interactive-map
+touch index.html style.css script.js
+
 
 # Doha-Itinerary-Guide
 <details>
