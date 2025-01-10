@@ -20,3 +20,4 @@ touch index.html style.css script.js
 
 <p>Here is the map of Doha:</p>
 
+<iframe src="https://seli-png.github.io/Doha-Itinerary-Guide/index.html" width="100%" height="500px"></iframe>
