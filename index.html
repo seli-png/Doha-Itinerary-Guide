@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Guide to Doha</title>
+    <title>Doha Travel Guide</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        /* Basic styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -33,31 +32,32 @@
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <header>
-        <h1>Travel Guide to Doha</h1>
+        <h1>Welcome to Doha Travel Guide</h1>
     </header>
 
+    <!-- Text Content -->
     <section>
-        <h2>Welcome</h2>
-        <p>Welcome to the travel guide for Doha! Explore the beautiful city with our interactive map and other resources.</p>
-        
-        <h2>Interactive Map</h2>
-        <p>Here is an embedded map to help you explore Doha:</p>
+        <p>Discover the beauty of Doha with this guide! Below, you’ll find an interactive map to help you plan your visit.</p>
 
-        <div id="map"></div>
+        <h2>Highlights</h2>
+        <ul>
+            <li>Explore the iconic Museum of Islamic Art.</li>
+            <li>Enjoy a walk along the Corniche.</li>
+            <li>Visit the vibrant Souq Waqif.</li>
+        </ul>
     </section>
+
+    <!-- Map Section -->
+    <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Initialize the map and set its view to Qatar's coordinates
         const map = L.map('map').setView([25.276987, 51.520008], 10);
-
-        // Add OpenStreetMap tiles as the base layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-
-        // Add a marker at Doha, Qatar's capital
         const marker = L.marker([25.276987, 51.520008]).addTo(map);
         marker.bindPopup("<b>Doha</b><br>Capital of Qatar").openPopup();
     </script>
