@@ -12,15 +12,19 @@
             margin: 0;
             padding: 0 20px;
         }
-        .expand-icon {
-            float: right;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-        .details.active + .expand-icon {
-            transform: rotate(180deg); /* Flip the icon when expanded */
+        ul li {
+          display: flex;
+          align-items: center; /* Aligns the text and icon vertically */
         }
 
+        .expand-icon {
+          margin-left: 8px; /* Adjust space between text and icon */
+          transition: transform 0.3s ease; /* Smooth animation for icon rotation */
+        }
+
+        .details {
+          display: none; /* Initially hide the details */
+        }
 
         h1, h2 {
             text-align: center;
@@ -173,7 +177,20 @@
 
         <div id="map"></div>
     </section>
+<script>
+    function toggleDetails(id) {
+      var details = document.getElementById(id);
+      var icon = document.getElementById('icon-' + id);
 
+      if (details.style.display === "block") {
+          details.style.display = "none";
+          icon.style.transform = "rotate(0deg)"; // Reset icon rotation
+      } else {
+          details.style.display = "block";
+          icon.style.transform = "rotate(180deg)"; // Rotate icon when opened
+      }
+    }
+  </script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Handle expandable topics
