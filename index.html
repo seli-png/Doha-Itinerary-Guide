@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> A complete guide for moving to Qatar </title>
+    <title>Complete Guide for Moving to Qatar</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
         }
@@ -23,90 +24,130 @@
             padding: 20px;
         }
 
-        #map {
-            height: 500px;
-            width: 100%;
-            margin-top: 20px;
-            border: 1px solid #ddd;
-        }
-
-        .filter-container {
-            text-align: center;
+        .dropdown, .filter-container {
             margin: 20px;
+            text-align: center;
         }
 
         select {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            width: 300px;
+        }
+
+        .content {
+            display: none;
+            margin: 20px;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-top: 20px;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Interactive Map with Dropdown Filter</h1>
+        <h1>Travel Guide: Moving to Qatar</h1>
     </header>
 
     <section>
-        <p>Select a category from the dropdown below to filter locations on the map:</p>
+        <h2>Choose a Topic</h2>
+        <div class="dropdown">
+            <label for="topics">Select a topic:</label>
+            <select id="topics">
+                <option value="overview">General Overview of Qatar</option>
+                <option value="visa">Visa and Residency Requirements</option>
+                <option value="housing">Housing and Neighborhoods</option>
+                <option value="education">Education and Schools</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="employment">Employment Opportunities</option>
+                <option value="cost">Cost of Living</option>
+                <option value="culture">Cultural and Social Aspects</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="markets">Markets</option>
+                <option value="transportation">Transportation</option>
+                <option value="relocation">Processes for Relocation from Different Regions</option>
+                <option value="tips">Practical Tips for Moving</option>
+                <option value="embassies">Embassies and Consulates</option>
+            </select>
+        </div>
+
+        <div id="overview" class="content">
+            <h2>General Overview of Qatar</h2>
+            <p>Qatar is a small yet influential nation in the Gulf, known for its robust economy, modern infrastructure, and cultural diversity.</p>
+        </div>
+        <!-- Repeat similar blocks for each topic -->
     </section>
 
-    <!-- Filter Dropdown -->
-    <div class="filter-container">
-        <label for="filterDropdown">Choose a location type: </label>
-        <select id="filterDropdown" onchange="filterMap()">
-            <option value="all">All Locations</option>
-            <option value="supermarkets">Supermarkets</option>
-            <option value="embassies">Embassies</option>
-            <option value="hospitals">Hospitals</option>
-        </select>
-    </div>
+    <section>
+        <h2>Interactive Map</h2>
+        <div class="filter-container">
+            <label for="filterDropdown">Filter locations:</label>
+            <select id="filterDropdown" onchange="filterMap()">
+                <option value="all">All Locations</option>
+                <option value="supermarkets">Supermarkets</option>
+                <option value="embassies">Embassies</option>
+                <option value="hospitals">Hospitals</option>
+            </select>
+        </div>
 
-    <div id="map"></div>
+        <div id="map"></div>
+    </section>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        const map = L.map('map').setView([25.276987, 51.520008], 10);  // Qatar coordinates
+        // Handle topic selection
+        const dropdown = document.getElementById('topics');
+        const contents = document.querySelectorAll('.content');
+
+        dropdown.addEventListener('change', (event) => {
+            contents.forEach(content => content.classList.remove('active'));
+            const selectedContent = document.getElementById(event.target.value);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+        });
+
+        // Initialize map
+        const map = L.map('map').setView([25.276987, 51.520008], 10);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Create marker groups for each category
+        // Create marker groups
         const supermarketsLayer = L.layerGroup().addTo(map);
         const embassiesLayer = L.layerGroup().addTo(map);
         const hospitalsLayer = L.layerGroup().addTo(map);
 
-        // Example Supermarkets
-        const supermarket1 = L.marker([25.276987, 51.520008]).bindPopup("Supermarket 1").addTo(supermarketsLayer);
-        const supermarket2 = L.marker([25.276789, 51.530008]).bindPopup("Supermarket 2").addTo(supermarketsLayer);
+        // Add markers to each group
+        L.marker([25.276987, 51.520008]).bindPopup("Supermarket 1").addTo(supermarketsLayer);
+        L.marker([25.276789, 51.530008]).bindPopup("Supermarket 2").addTo(supermarketsLayer);
+        L.marker([25.276987, 51.510008]).bindPopup("Embassy 1").addTo(embassiesLayer);
+        L.marker([25.276589, 51.520988]).bindPopup("Embassy 2").addTo(embassiesLayer);
+        L.marker([25.270000, 51.520000]).bindPopup("Hospital 1").addTo(hospitalsLayer);
+        L.marker([25.260000, 51.530000]).bindPopup("Hospital 2").addTo(hospitalsLayer);
 
-        // Example Embassies
-        const embassy1 = L.marker([25.276987, 51.510008]).bindPopup("Embassy 1").addTo(embassiesLayer);
-        const embassy2 = L.marker([25.276589, 51.520988]).bindPopup("Embassy 2").addTo(embassiesLayer);
-
-        // Example Hospitals
-        const hospital1 = L.marker([25.270000, 51.520000]).bindPopup("Hospital 1").addTo(hospitalsLayer);
-        const hospital2 = L.marker([25.260000, 51.530000]).bindPopup("Hospital 2").addTo(hospitalsLayer);
-
-        // Filter Function
+        // Filter map markers
         function filterMap() {
             const selectedValue = document.getElementById('filterDropdown').value;
 
-            // Clear all layers first
             supermarketsLayer.removeFrom(map);
             embassiesLayer.removeFrom(map);
             hospitalsLayer.removeFrom(map);
 
-            // Add the selected layer based on the dropdown
-            if (selectedValue === 'supermarkets') {
-                supermarketsLayer.addTo(map);
-            } else if (selectedValue === 'embassies') {
-                embassiesLayer.addTo(map);
-            } else if (selectedValue === 'hospitals') {
-                hospitalsLayer.addTo(map);
-            } else {
-                // Show all locations
+            if (selectedValue === 'supermarkets') supermarketsLayer.addTo(map);
+            if (selectedValue === 'embassies') embassiesLayer.addTo(map);
+            if (selectedValue === 'hospitals') hospitalsLayer.addTo(map);
+            if (selectedValue === 'all') {
                 supermarketsLayer.addTo(map);
                 embassiesLayer.addTo(map);
                 hospitalsLayer.addTo(map);
