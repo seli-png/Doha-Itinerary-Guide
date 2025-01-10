@@ -5,7 +5,7 @@ cd interactive-map
 touch index.html style.css script.js
 
 
-# Doha-Itinerary-Guide
+# Move to Qatar Guide
 <details>
   <summary>Day 1: Arrival and City Exploration</summary>
   
