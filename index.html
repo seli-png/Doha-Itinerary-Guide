@@ -162,7 +162,6 @@
     </ul>
 </section>
 
-
     <section>
         <h2>Interactive Map</h2>
         <div class="filter-container">
@@ -177,70 +176,62 @@
 
         <div id="map"></div>
     </section>
+
 <script>
     function toggleDetails(id) {
-      var details = document.getElementById(id);
-      var icon = document.getElementById('icon-' + id);
+        var details = document.getElementById(id);
+        var icon = document.getElementById('icon-' + id);
 
-      if (details.style.display === "block") {
-          details.style.display = "none";
-          icon.style.transform = "rotate(0deg)"; // Reset icon rotation
-      } else {
-          details.style.display = "block";
-          icon.style.transform = "rotate(180deg)"; // Rotate icon when opened
-      }
+        // Toggle the active class for details visibility
+        if (details.classList.contains('active')) {
+            details.classList.remove('active');
+            icon.style.transform = "rotate(0deg)"; // Reset icon rotation
+        } else {
+            details.classList.add('active');
+            icon.style.transform = "rotate(180deg)"; // Rotate icon when opened
+        }
     }
-  </script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // Handle expandable topics
-        function toggleDetails(id) {
-            const element = document.getElementById(id);
-            if (element.classList.contains('active')) {
-                element.classList.remove('active');
-            } else {
-                element.classList.add('active');
-            }
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Initialize map
+    const map = L.map('map').setView([25.276987, 51.520008], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Create marker groups
+    const supermarketsLayer = L.layerGroup().addTo(map);
+    const embassiesLayer = L.layerGroup().addTo(map);
+    const hospitalsLayer = L.layerGroup().addTo(map);
+
+    // Add markers to each group
+    L.marker([25.276987, 51.520008]).bindPopup("Supermarket 1").addTo(supermarketsLayer);
+    L.marker([25.276789, 51.530008]).bindPopup("Supermarket 2").addTo(supermarketsLayer);
+    L.marker([25.276987, 51.510008]).bindPopup("Embassy 1").addTo(embassiesLayer);
+    L.marker([25.276589, 51.520988]).bindPopup("Embassy 2").addTo(embassiesLayer);
+    L.marker([25.270000, 51.520000]).bindPopup("Hospital 1").addTo(hospitalsLayer);
+    L.marker([25.260000, 51.530000]).bindPopup("Hospital 2").addTo(hospitalsLayer);
+
+    // Filter map markers
+    function filterMap() {
+        const selectedValue = document.getElementById('filterDropdown').value;
+
+        supermarketsLayer.removeFrom(map);
+        embassiesLayer.removeFrom(map);
+        hospitalsLayer.removeFrom(map);
+
+        if (selectedValue === 'supermarkets') supermarketsLayer.addTo(map);
+        if (selectedValue === 'embassies') embassiesLayer.addTo(map);
+        if (selectedValue === 'hospitals') hospitalsLayer.addTo(map);
+        if (selectedValue === 'all') {
+            supermarketsLayer.addTo(map);
+            embassiesLayer.addTo(map);
+            hospitalsLayer.addTo(map);
         }
-
-        // Initialize map
-        const map = L.map('map').setView([25.276987, 51.520008], 10);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Create marker groups
-        const supermarketsLayer = L.layerGroup().addTo(map);
-        const embassiesLayer = L.layerGroup().addTo(map);
-        const hospitalsLayer = L.layerGroup().addTo(map);
-
-        // Add markers to each group
-        L.marker([25.276987, 51.520008]).bindPopup("Supermarket 1").addTo(supermarketsLayer);
-        L.marker([25.276789, 51.530008]).bindPopup("Supermarket 2").addTo(supermarketsLayer);
-        L.marker([25.276987, 51.510008]).bindPopup("Embassy 1").addTo(embassiesLayer);
-        L.marker([25.276589, 51.520988]).bindPopup("Embassy 2").addTo(embassiesLayer);
-        L.marker([25.270000, 51.520000]).bindPopup("Hospital 1").addTo(hospitalsLayer);
-        L.marker([25.260000, 51.530000]).bindPopup("Hospital 2").addTo(hospitalsLayer);
-
-        // Filter map markers
-        function filterMap() {
-            const selectedValue = document.getElementById('filterDropdown').value;
-
-            supermarketsLayer.removeFrom(map);
-            embassiesLayer.removeFrom(map);
-            hospitalsLayer.removeFrom(map);
-
-            if (selectedValue === 'supermarkets') supermarketsLayer.addTo(map);
-            if (selectedValue === 'embassies') embassiesLayer.addTo(map);
-            if (selectedValue === 'hospitals') hospitalsLayer.addTo(map);
-            if (selectedValue === 'all') {
-                supermarketsLayer.addTo(map);
-                embassiesLayer.addTo(map);
-                hospitalsLayer.addTo(map);
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
-
