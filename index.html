@@ -13,34 +13,41 @@
             padding: 0 20px;
         }
         ul li {
-            display: flex;
-            align-items: center;
+          display: flex;
+          align-items: center; /* Aligns the text and icon vertically */
         }
+
         .expand-icon {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
+          margin-left: 8px; /* Adjust space between text and icon */
+          transition: transform 0.3s ease; /* Smooth animation for icon rotation */
         }
+
         .details {
-            display: none;
+          display: none; /* Initially hide the details */
         }
+
         h1, h2 {
             text-align: center;
         }
+
+      /* CSS for dotted bullet points */
         ul {
-            list-style-type: circle;
+            list-style-type: circle; /* Default for outer lists */
             margin-left: 20px;
         }
         ul ul {
-            list-style-type: disc;
-            margin-left: 20px;
+        list-style-type: disc; /* Nested lists with solid dots */
+        margin-left: 20px;
         }
         li {
             margin: 10px 0;
             cursor: pointer;
         }
+
         li:hover {
             color: #007BFF;
         }
+
         .details {
             display: none;
             margin-left: 20px;
@@ -48,22 +55,27 @@
             padding-left: 10px;
             border-left: 2px solid #ddd;
         }
+
         .details.active {
             display: block;
         }
+
         .details p {
             margin: 5px 0;
         }
+
         #map {
             height: 500px;
             width: 100%;
             margin-top: 20px;
             border: 1px solid #ddd;
         }
+
         .filter-container {
             text-align: center;
             margin: 20px;
         }
+
         select {
             padding: 10px 20px;
             font-size: 16px;
@@ -76,66 +88,79 @@
 
     <section>
         <h2>Introduction</h2>
-        <p>Qatar, a small yet influential nation in the Gulf, is a hub of cultural diversity, modern infrastructure, and exceptional opportunities. Known for its robust economy, world-class healthcare, and high standard of living, Qatar attracts individuals and families worldwide. This guide will walk you through the essential information and processes for relocating to Qatar, tailored for families, individuals, and professionals from different parts of the globe.</p>
+        <p>Qatar, a small yet influential nation in the Gulf, is a hub of cultural diversity, modern infrastructure, and exceptional opportunities. Known for its robust economy, world-class healthcare, and high standard of living, Qatar attracts individuals and families worldwide. This guide will walk you through the essential information and processes for relocating to Qatar, tailored for families, individuals, and professionals from different parts of the globe.
+</p>
     </section>
+   <section>
+    <h2>General Overview of Qatar</h2>
+    <h3>Location: </h3>
+    <p>
+        Qatar is a peninsula in the Arabian Gulf, strategically located near key international shipping routes. It shares its only land border with Saudi Arabia to the south and is surrounded by the Arabian Gulf on three sides. Its central location makes it a convenient gateway between Europe, Asia, and Africa.
+    </p>
+
+    <h3>Climate: </h3>
+    <p>
+        Qatar experiences a desert climate characterized by hot summers (May-September) where temperatures can soar above 45°C (113°F), and mild, pleasant winters (October-April) with temperatures averaging 20°C (68°F). Rainfall is sparse, with occasional showers during the cooler months.
+    </p>
+
+    <h3>Language: </h3>
+    <p>
+        Arabic is the official language, but English is widely used in business, education, and daily life, making it easy for expatriates to adapt. Other languages like Hindi, Urdu, Tagalog, and Malayalam are also commonly spoken due to the diverse expatriate population.
+    </p>
+
+    <h3>Currency: </h3>
+    <p>
+        The Qatari Riyal (QAR) is pegged to the US Dollar, providing stability. ATMs and card payments are widely accessible, and banking services are efficient for residents and visitors alike.
+    </p>
+
+    <h3>Culture: </h3>
+    <p>
+        Rooted in Islamic traditions, Qatar's culture emphasizes family values, respect, and hospitality. Despite its conservative nature, the country is welcoming to other cultures due to its large expatriate population, which constitutes over 80% of its residents. Traditional practices such as falconry, dhow sailing, and camel racing coexist with a modern, cosmopolitan lifestyle.
+    </p>
+
+    <h3>Key Attractions: </h3>
+    <ul>
+        <li><strong>Museum of Islamic Art:</strong> Showcasing Islamic artifacts from across the globe.</li>
+        <li><strong>Souq Waqif:</strong> A vibrant marketplace offering traditional goods, spices, and dining experiences.</li>
+        <li><strong>Aspire Park:</strong> A lush green space ideal for families and outdoor activities.</li>
+        <li><strong>The Pearl-Qatar:</strong> A man-made island with luxury residences, restaurants, and retail outlets.</li>
+        <li><strong>Lusail City:</strong> A futuristic city featuring state-of-the-art architecture, entertainment hubs, and venues like the Lusail Iconic Stadium, a centerpiece of the 2022 FIFA World Cup.</li>
+        <li><strong>Desert Adventures:</strong> The inland sea (Khor Al Adaid) is a UNESCO-recognized natural reserve and a popular spot for dune bashing and camping.</li>
+    </ul>
+</section>
+
 
     <section>
-        <h2>General Overview of Qatar</h2>
-        <h3>Location:</h3>
-        <p>Qatar is a peninsula in the Arabian Gulf, strategically located near key international shipping routes. It shares its only land border with Saudi Arabia to the south and is surrounded by the Arabian Gulf on three sides. Its central location makes it a convenient gateway between Europe, Asia, and Africa.</p>
+    <h2>Topics</h2>
+    <ul>
+        <li onclick="toggleDetails('visa')">
+            Visa and Residency Requirements 
+            <span id="icon-visa" class="expand-icon">▼</span>
+        </li>
+         <div id="visa" class="details">
+         <h2>Visa and Residency Information</h2>
 
-        <h3>Climate:</h3>
-        <p>Qatar experiences a desert climate characterized by hot summers (May-September) where temperatures can soar above 45°C (113°F), and mild, pleasant winters (October-April) with temperatures averaging 20°C (68°F). Rainfall is sparse, with occasional showers during the cooler months.</p>
-
-        <h3>Language:</h3>
-        <p>Arabic is the official language, but English is widely used in business, education, and daily life, making it easy for expatriates to adapt. Other languages like Hindi, Urdu, Tagalog, and Malayalam are also commonly spoken due to the diverse expatriate population.</p>
-
-        <h3>Currency:</h3>
-        <p>The Qatari Riyal (QAR) is pegged to the US Dollar, providing stability. ATMs and card payments are widely accessible, and banking services are efficient for residents and visitors alike.</p>
-
-        <h3>Culture:</h3>
-        <p>Rooted in Islamic traditions, Qatar's culture emphasizes family values, respect, and hospitality. Despite its conservative nature, the country is welcoming to other cultures due to its large expatriate population, which constitutes over 80% of its residents. Traditional practices such as falconry, dhow sailing, and camel racing coexist with a modern, cosmopolitan lifestyle.</p>
-
-        <h3>Key Attractions:</h3>
-        <ul>
-            <li><strong>Museum of Islamic Art:</strong> Showcasing Islamic artifacts from across the globe.</li>
-            <li><strong>Souq Waqif:</strong> A vibrant marketplace offering traditional goods, spices, and dining experiences.</li>
-            <li><strong>Aspire Park:</strong> A lush green space ideal for families and outdoor activities.</li>
-            <li><strong>The Pearl-Qatar:</strong> A man-made island with luxury residences, restaurants, and retail outlets.</li>
-            <li><strong>Lusail City:</strong> A futuristic city featuring state-of-the-art architecture, entertainment hubs, and venues like the Lusail Iconic Stadium, a centerpiece of the 2022 FIFA World Cup.</li>
-            <li><strong>Desert Adventures:</strong> The inland sea (Khor Al Adaid) is a UNESCO-recognized natural reserve and a popular spot for dune bashing and camping.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Topics</h2>
-        <ul>
-            <li onclick="toggleDetails('visa')">
-                Visa and Residency Requirements 
-                <span id="icon-visa" class="expand-icon">&#9660;</span>
-            </li>
-            <div id="visa" class="details">
-                <h3>For Individuals:</h3>
+    <h3>For Individuals:</h3>
+    <ul>
+        <li>
+            <strong>Work Visa:</strong> This is the most common type of visa for individuals relocating to Qatar. It must be secured through an employer, who acts as your sponsor. A formal job offer is required before applying.
+            <ul>
+                <li><strong>Steps:</strong></li>
                 <ul>
-                    <li>
-                        <strong>Work Visa:</strong> This is the most common type of visa for individuals relocating to Qatar. It must be secured through an employer, who acts as your sponsor. A formal job offer is required before applying.
+                    <li>The employer submits a visa application on your behalf via the Ministry of Interior (MOI) website.</li>
+                    <li>Documents required:
                         <ul>
-                            <li><strong>Steps:</strong></li>
-                            <ul>
-                                <li>The employer submits a visa application on your behalf via the Ministry of Interior (MOI) website.</li>
-                                <li>Documents required:
-                                    <ul>
-                                        <li>Passport copy</li>
-                                        <li>Employment contract</li>
-                                        <li>Passport-sized photographs</li>
-                                        <li>Educational certificates (attested)</li>
-                                    </ul>
-                                    </li>
-                                    <li>Once the application is approved, the employee must complete a medical examination and fingerprinting.</li>
-                                </ul>
-                                <li><strong>Processing Time:</strong> 2-4 weeks.</li>
-                            </ul>
-                        </li>
+                            <li>Passport copy</li>
+                            <li>Employment contract</li>
+                            <li>Passport-sized photographs</li>
+                            <li>Educational certificates (attested)</li>
+                        </ul>
+                    </li>
+                    <li>Once the application is approved, the employee must complete a medical examination and fingerprinting.</li>
+                </ul>
+                <li><strong>Processing Time:</strong> 2-4 weeks.</li>
+            </ul>
+        </li>
 
         <li>
             <strong>Family Sponsorship:</strong> Individuals earning above QAR 10,000 per month are eligible to sponsor their immediate family members.
@@ -222,17 +247,70 @@
         <li><strong>Biometric Centers:</strong> The MOI Service Centers in Al Gharrafa or Industrial Area are popular options.</li>
         <li><strong>Visa Collection:</strong> MOI offices in Mesaimeer or Madinat Khalifa handle visa finalizations.</li>
     </ul>
-            </div>
+        </div>
 
-            <li onclick="toggleDetails('housing')">
-                Housing and Neighborhoods 
-                <span id="icon-housing" class="expand-icon">&#9660;</span>
-            </li>
-            <div id="housing" class="details">
-                <!-- Add housing details here -->
-            </div>
-        </ul>
-    </section>
+
+        <li onclick="toggleDetails('housing')">
+            Housing and Neighborhoods 
+            <span id="icon-housing" class="expand-icon">▼</span>
+        </li>
+        <div id="housing" class="details">
+            <p>- Popular neighborhoods: Overview of areas for families and singles.</p>
+            <p>- Renting vs. buying: Pros, cons, and procedures.</p>
+            <p>- Cost expectations: Typical housing costs in Qatar.</p>
+        </div>
+
+        <li onclick="toggleDetails('education')">
+            Education and Schools 
+            <span id="icon-education" class="expand-icon">▼</span>
+        </li>
+        <div id="education" class="details">
+            <p>- International schools: Curriculum options and fees.</p>
+            <p>- Universities: Higher education opportunities in Qatar.</p>
+            <p>- Admission tips: Steps for enrolling children or yourself.</p>
+        </div>
+
+        <li onclick="toggleDetails('healthcare')">
+            Healthcare 
+            <span id="icon-healthcare" class="expand-icon">▼</span>
+        </li>
+        <div id="healthcare" class="details">
+            <p>- Public healthcare: Overview of government services.</p>
+            <p>- Private hospitals: Leading institutions and their specialties.</p>
+            <p>- Health insurance: Requirements and available plans.</p>
+        </div>
+
+        <li onclick="toggleDetails('employment')">
+            Employment Opportunities 
+            <span id="icon-employment" class="expand-icon">▼</span>
+        </li>
+        <div id="employment" class="details">
+            <p>- Key industries: Sectors driving the Qatari economy.</p>
+            <p>- Job portals: Platforms to search for jobs in Qatar.</p>
+            <p>- Work culture: What to expect in a Qatari workplace.</p>
+        </div>
+
+        <li onclick="toggleDetails('cost')">
+            Cost of Living 
+            <span id="icon-cost" class="expand-icon">▼</span>
+        </li>
+        <div id="cost" class="details">
+            <p>- Housing: Typical rents for apartments and villas.</p>
+            <p>- Transportation: Car rentals, metro costs, and taxis.</p>
+            <p>- Groceries: Supermarket prices and budgeting tips.</p>
+        </div>
+
+        <li onclick="toggleDetails('culture')">
+            Cultural and Social Aspects 
+            <span id="icon-culture" class="expand-icon">▼</span>
+        </li>
+        <div id="culture" class="details">
+            <p>- Dress code: Dos and don'ts for attire in Qatar.</p>
+            <p>- Social etiquette: Key customs to respect.</p>
+            <p>- Celebrations: National holidays and festivals.</p>
+        </div>
+    </ul>
+</section>
 
     <section>
         <h2>Interactive Map</h2>
