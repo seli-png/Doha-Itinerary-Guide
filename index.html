@@ -30,11 +30,15 @@
             text-align: center;
         }
 
+      /* CSS for dotted bullet points */
         ul {
-            list-style: none;
-            padding: 0;
+            list-style-type: circle; /* Default for outer lists */
+            margin-left: 20px;
         }
-
+        ul ul {
+        list-style-type: disc; /* Nested lists with solid dots */
+        margin-left: 20px;
+        }
         li {
             margin: 10px 0;
             cursor: pointer;
@@ -135,7 +139,7 @@
         </li>
          <!-- For Individuals Section -->
         <section id="individuals">
-            <h3>For Individuals</h3>
+            <h3>For Individuals:</h3>
 
             <!-- Work Visa Section -->
             <section id="work-visa">
@@ -144,7 +148,7 @@
                     This is the most common type of visa for individuals relocating to Qatar. It must be secured through an employer, who acts as your sponsor. A formal job offer is required before applying.
                 </p>
                 <h5>Steps:</h5>
-                <ol>
+                <ul>
                     <li>The employer submits a visa application on your behalf via the Ministry of Interior (MOI) website.</li>
                     <li>Prepare required documents:
                         <ul>
@@ -156,7 +160,7 @@
                     </li>
                     <li>Complete a medical examination and fingerprinting.</li>
                     <li>Processing Time: Typically 2-4 weeks.</li>
-                </ol>
+                </ul>
             </section>
 
             <!-- Student Visa Section -->
@@ -166,7 +170,7 @@
                     This visa is issued to individuals enrolling in recognized Qatari institutions such as Qatar University or Hamad Bin Khalifa University. The visa is sponsored by the educational institution.
                 </p>
                 <h5>Steps:</h5>
-                <ol>
+                <ul>
                     <li>Secure admission to a recognized educational institution in Qatar.</li>
                     <li>Submit required documents to the institution:
                         <ul>
@@ -178,7 +182,7 @@
                     </li>
                     <li>The institution processes the visa application on your behalf.</li>
                     <li>Once approved, the visa will be issued, allowing you to travel to Qatar for studies.</li>
-                </ol>
+                </ul>
             </section>
         </div>
 
