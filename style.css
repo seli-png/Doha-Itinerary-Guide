@@ -1,0 +1,53 @@
+/* General styles for body and text */
+body {
+    background-color: #f4f4f9; /* Light gray background */
+    color: #333333; /* Dark gray text color */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles for strong elements */
+strong {
+    color: #0077cc; /* Blue for strong text */
+}
+
+/* Style for list items */
+li {
+    font-size: 18px;
+    color: #444444;
+    cursor: pointer;
+}
+
+/* Styles for the details section */
+.details {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #cccccc;
+    padding: 15px;
+    margin-top: 10px;
+    display: none; /* Initially hidden */
+}
+
+/* Styles for headings */
+h3 {
+    color: #0077cc; /* Blue headings */
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Add a hover effect for list items */
+li:hover {
+    color: #0077cc; /* Change text color on hover */
+}
+
+/* Expand icon styling */
+.expand-icon {
+    font-size: 14px;
+    color: #555555;
+}
+
+/* Add some spacing for paragraphs */
+p {
+    margin: 10px 0;
+}
