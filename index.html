@@ -165,9 +165,14 @@
         .column {
           float: left;
           width: 16.66%;
-          height: 25px;
         }
 
+        .column img {
+            width: 100%; /* Set the width to 100% of the column */
+            height: 25px; /* Set a fixed height for the images */
+            object-fit: cover; /* Ensure the images cover the area without distortion */
+        }
+        
         /* Add a transparency effect for thumnbail images */
         .demo {
           opacity: 0.6;
