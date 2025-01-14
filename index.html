@@ -101,8 +101,8 @@
         /* Hide the images by default */
         .mySlides {
           display: none;
-          width: 1400px; /* Full screen width */
-          height: 1000px; /* Fixed height */
+          width: 100vw; /* Full screen width */
+          height: 300px; /* Fixed height */
           object-fit: cover; /* Crop without distortion */
         }
 
@@ -158,7 +158,11 @@
         }
 
         .row:after {
-          content: "";
+            width: 100%; /* Full width for the row */
+              margin: auto; /* Center align thumbnails */
+              display: flex; /* Arrange thumbnails horizontally */
+              justify-content: center; /* Center alignment */
+        content: "";
           display: table;
           clear: both;
         }   
@@ -167,10 +171,14 @@
         .column {
           float: left;
           width: 16.66%;
+            padding: 5px; /* Add spacing between thumbnails */
         }
 
         /* Add a transparency effect for thumnbail images */
         .demo {
+            width: auto; /* Maintain aspect ratio */
+  height: 60px; /* Fixed height for thumbnails */
+  object-fit: contain; /* Prevent cropping of thumbnails */
           opacity: 0.6;
         }
 
