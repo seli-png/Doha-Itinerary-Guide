@@ -1449,13 +1449,101 @@ function showSlides(n) {
     const embassiesLayer = L.layerGroup().addTo(map);
     const hospitalsLayer = L.layerGroup().addTo(map);
 
+    // Data for supermarkets
+    const supermarkets = [
+        { lat: 25.276987, lng: 51.520022, name: "Carrefour" },
+        { lat: 25.273999, lng: 51.522557, name: "Lulu Hypermarket" },
+        { lat: 25.278482, lng: 51.523063, name: "Al Meera Supermarket" },
+        { lat: 25.325556, lng: 51.524167, name: "Safari Hypermarket" },
+        { lat: 25.306950, lng: 51.447960, name: "Monoprix" }
+    ];
+
+    // Data for embassies
+    const embassies = [
+        { lat: 25.3275, lng: 51.5203, name: "Afghanistan" },
+        { lat: 25.3274, lng: 51.5204, name: "Bangladesh" },
+        { lat: 25.3271, lng: 51.5206, name: "China" },
+        { lat: 25.3273, lng: 51.5205, name: "India" },
+        { lat: 25.3272, lng: 51.5207, name: "Indonesia" },
+        { lat: 25.3252, lng: 51.5209, name: "Japan" },
+        { lat: 25.3270, lng: 51.5208, name: "Jordan" },
+        { lat: 25.3443, lng: 51.5142, name: "Malaysia" },
+        { lat: 25.2388, lng: 51.4914, name: "Nepal" },
+        { lat: 25.3276, lng: 51.5202, name: "Pakistan" },
+        { lat: 25.3277, lng: 51.5201, name: "Philippines" },
+        { lat: 25.3278, lng: 51.5200, name: "Sri Lanka" },
+        { lat: 25.3279, lng: 51.5199, name: "Thailand" },
+        { lat: 25.3280, lng: 51.5198, name: "Turkey" },
+        { lat: 25.3281, lng: 51.5197, name: "Austria" },
+        { lat: 25.3282, lng: 51.5196, name: "Belgium" },
+        { lat: 25.3253, lng: 51.5210, name: "France" },
+        { lat: 25.3250, lng: 51.5208, name: "Germany" },
+        { lat: 25.3283, lng: 51.5195, name: "Italy" },
+        { lat: 25.3284, lng: 51.5194, name: "Netherlands" },
+        { lat: 25.3285, lng: 51.5193, name: "Norway" },
+        { lat: 25.3286, lng: 51.5192, name: "Poland" },
+        { lat: 25.3287, lng: 51.5191, name: "Romania" },
+        { lat: 25.3288, lng: 51.5190, name: "Spain" },
+        { lat: 25.3289, lng: 51.5189, name: "Sweden" },
+        { lat: 25.2867, lng: 51.5175, name: "United Kingdom" },
+        { lat: 25.3290, lng: 51.5188, name: "Bahrain" },
+        { lat: 25.3291, lng: 51.5187, name: "Egypt" },
+        { lat: 25.3292, lng: 51.5186, name: "Kuwait" },
+        { lat: 25.3293, lng: 51.5185, name: "Lebanon" },
+        { lat: 25.3294, lng: 51.5184, name: "Libya" },
+        { lat: 25.3295, lng: 51.5183, name: "Morocco" },
+        { lat: 25.3296, lng: 51.5182, name: "Oman" },
+        { lat: 25.3297, lng: 51.5181, name: "Palestine" },
+        { lat: 25.3298, lng: 51.5180, name: "Saudi Arabia" },
+        { lat: 25.3299, lng: 51.5179, name: "Syria" },
+        { lat: 25.3300, lng: 51.5178, name: "United Arab Emirates (UAE)" },
+        { lat: 25.3301, lng: 51.5177, name: "Yemen" },
+        { lat: 25.3302, lng: 51.5176, name: "Algeria" },
+        { lat: 25.3303, lng: 51.5175, name: "Ethiopia" },
+        { lat: 25.3304, lng: 51.5174, name: "Kenya" },
+        { lat: 25.3305, lng: 51.5173, name: "Mauritius" },
+        { lat: 25.3306, lng: 51.5172, name: "South Africa" },
+        { lat: 25.3307, lng: 51.5171, name: "Sudan" },
+        { lat: 25.3308, lng: 51.5170, name: "Tunisia" },
+        { lat: 25.3274, lng: 51.5204, name: "Canada" },
+        { lat: 25.2487, lng: 51.5354, name: "United States of America" },
+        { lat: 25.3309, lng: 51.5169, name: "Argentina" },
+        { lat: 25.3310, lng: 51.5168, name: "Brazil" },
+        { lat: 25.3311, lng: 51.5167, name: "Chile" },
+        { lat: 25.3275, lng: 51.5203, name: "Australia" },
+        { lat: 25.3312, lng: 51.5166, name: "New Zealand" }
+    ];
+
+    // Data for hospitals
+    const hospitals = [
+        { lat: 25.166156, lng: 51.590981, name: "Al Wakrah Hospital" },
+        { lat: 25.295237, lng: 51.501523, name: "Hamad Medical City" },
+        { lat: 25.683700, lng: 51.505900, name: "Al Khor Hospital" },
+        { lat: 25.276000, lng: 51.514000, name: "Al-Ahli Hospital" },
+        { lat: 25.261500, lng: 51.501400, name: "Al Emadi Hospital" },
+        { lat: 25.611400, lng: 50.978000, name: "The Cuban Hospital" },
+        { lat: 25.280000, lng: 51.520000, name: "Doha Clinic Hospital" },
+        { lat: 25.280000, lng: 51.520000, name: "Aster Hospital" },
+        { lat: 25.295237, lng: 51.501523, name: "Communicable Disease Center" },
+        { lat: 25.276000, lng: 51.514000, name: "Hamad General Hospital" },
+        { lat: 25.276000, lng: 51.514000, name: "National Center for Cancer Care and Research (NCCCR)" },
+        { lat: 25.276000, lng: 51.514000, name: "Qatar Rehabilitation Institute" },
+        { lat: 25.295237, lng: 51.501523, name: "Rumeilah Hospital" },
+        { lat: 25.166156, lng: 51.590981, name: "Hazm Mebaireek General Hospital" }
+    ];
+
     // Add markers to each group
-    L.marker([25.276987, 51.520008]).bindPopup("Supermarket 1").addTo(supermarketsLayer);
-    L.marker([25.276789, 51.530008]).bindPopup("Supermarket 2").addTo(supermarketsLayer);
-    L.marker([25.276987, 51.510008]).bindPopup("Embassy 1").addTo(embassiesLayer);
-    L.marker([25.276589, 51.520988]).bindPopup("Embassy 2").addTo(embassiesLayer);
-    L.marker([25.270000, 51.520000]).bindPopup("Hospital 1").addTo(hospitalsLayer);
-    L.marker([25.260000, 51.530000]).bindPopup("Hospital 2").addTo(hospitalsLayer);
+    supermarkets.forEach(location => {
+        L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(supermarketsLayer);
+    });
+
+    embassies.forEach(location => {
+        L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(embassiesLayer);
+    });
+
+    hospitals.forEach(location => {
+        L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(hospitalsLayer);
+    });
 
     // Filter map markers
     function filterMap() {
