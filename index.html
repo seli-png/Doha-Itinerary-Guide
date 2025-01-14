@@ -97,7 +97,12 @@
 
         /* Position the image container (needed to position the left and right arrows) */
         .container {
-            position: relative;
+          width: 100vw; /* Full screen width */
+          height: 100px; /* Maintain aspect ratio */
+          position: relative;
+          overflow: hidden;
+          margin: auto; /* Center vertically */
+    
         }
 
         /* Hide the images by default */
