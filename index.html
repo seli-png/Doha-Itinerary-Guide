@@ -1436,91 +1436,128 @@ function showSlides(n) {
 </script>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-    // Initialize map
-    const map = L.map('map').setView([25.276987, 51.520008], 10);
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([25.276987, 51.520008], 10);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-    // Create marker groups
-    const supermarketsLayer = L.layerGroup().addTo(map);
-    const embassiesLayer = L.layerGroup().addTo(map);
-    const hospitalsLayer = L.layerGroup().addTo(map);
+        // Create marker groups
+        const supermarketsLayer = L.layerGroup().addTo(map);
+        const embassiesLayer = L.layerGroup().addTo(map);
+        const hospitalsLayer = L.layerGroup().addTo(map);
 
-    // Data for supermarkets
-    const supermarkets = [
-        { lat: 25.338317188408773, lng: 51.460834572703675, name: "Carrefour Supermarket" },
-        { lat: 25.304180045398493, lng: 51.48727042371788, name: "Lulu Hypermarket - Al Messila" },
-        { lat: 25.35419236790088, lng: 51.48702273607036, name: "Marza Hypermarket" },
-        { lat: 25.32232223073883, lng: 51.52712518152358, name: "Monoprix Palm Tower" },
-        { lat: 25.32586445315488, lng: 51.51771529617073, name: "West Bay Complex Super Market WLL" },
-        { lat: 25.27193355698328, lng: 51.5291416257107, name: "Panda HyperMarket" },
-        { lat: 25.27511522736816, lng: 51.51600876394068, name: "Megamart" },
-        { lat: 25.27127981718032, lng: 51.52879255168242, name: "Al Meera - Al Mansoura" },
-        { lat: 25.27780795103222, lng: 51.54758382334017, name: "New Taif Hypermarket" },
-        { lat: 25.262002985823212, lng: 51.55728541106619, name: "Family Food Centre" },
-        { lat: 25.253901397130175, lng: 51.545237772187996, name: "Lulu Hypermarket - D-ring Road" },
-        { lat: 25.1967720390411, lng: 51.508864719612944, name: "Lulu Hypermarket - Barwa City" },
-        { lat: 25.2550907905126, lng: 51.48323775275494, name: "Dana Hypermarket - Salwa Road" },
-        { lat: 25.25958467827414, lng: 51.44219440938552, name: "Carrefour" },
-        { lat: 25.25690125334794, lng: 51.43724612170602, name: "Al Meera - Hyatt Plaza" },
-        { lat: 25.239885280536, lng: 51.4322184642974, name: "SAUDIA HYPERMARKET" },
-        { lat: 25.23277602831604, lng: 51.436687825342304, name: "Dohar Hypermarket" },
-        { lat: 25.830080951761914, lng: 51.247364931040714, name: "Al Meera - Ghuwairiya" }
-    ];
+        // Data for supermarkets
+        const supermarkets = [
+            { lat: 25.338317188408773, lng: 51.460834572703675, name: "Carrefour Supermarket" },
+            { lat: 25.304180045398493, lng: 51.48727042371788, name: "Lulu Hypermarket - Al Messila" },
+            { lat: 25.35419236790088, lng: 51.48702273607036, name: "Marza Hypermarket" },
+            { lat: 25.32232223073883, lng: 51.52712518152358, name: "Monoprix Palm Tower" },
+            { lat: 25.32586445315488, lng: 51.51771529617073, name: "West Bay Complex Super Market WLL" },
+            { lat: 25.27193355698328, lng: 51.5291416257107, name: "Panda HyperMarket" },
+            { lat: 25.27511522736816, lng: 51.51600876394068, name: "Megamart" },
+            { lat: 25.27127981718032, lng: 51.52879255168242, name: "Al Meera - Al Mansoura" },
+            { lat: 25.27780795103222, lng: 51.54758382334017, name: "New Taif Hypermarket" },
+            { lat: 25.262002985823212, lng: 51.55728541106619, name: "Family Food Centre" },
+            { lat: 25.253901397130175, lng: 51.545237772187996, name: "Lulu Hypermarket - D-ring Road" },
+            { lat: 25.1967720390411, lng: 51.508864719612944, name: "Lulu Hypermarket - Barwa City" },
+            { lat: 25.2550907905126, lng: 51.48323775275494, name: "Dana Hypermarket - Salwa Road" },
+            { lat: 25.25958467827414, lng: 51.44219440938552, name: "Carrefour" },
+            { lat: 25.25690125334794, lng: 51.43724612170602, name: "Al Meera - Hyatt Plaza" },
+            { lat: 25.239885280536, lng: 51.4322184642974, name: "SAUDIA HYPERMARKET" },
+            { lat: 25.23277602831604, lng: 51.436687825342304, name: "Dohar Hypermarket" },
+            { lat: 25.830080951761914, lng: 51.247364931040714, name: "Al Meera - Ghuwairiya" }
+        ];
 
-    // Data for embassies
-    
-    // Data for hospitals
-    const hospitals = [
-        { lat: 25.16752239480468, lng: 51.588350855507024, name: "Al Wakrah Hospital" }, 
-        { lat: 25.294512233427533, lng: 51.50975395109598, name: "Hamad Medical City" }, 
-        { lat: 25.716116178332726, lng: 51.515990127536334, name: "Al Khor Hospital" },
-        { lat: 25.308465938776962, lng: 51.49977785125861, name: "Al-Ahli Hospital" }, 
-        { lat: 25.25494602148686, lng: 51.534898249352445, name: "Al Emadi Hospital" }, 
-        { lat: 25.439628083032705, lng: 50.860221324610926, name: "The Cuban Hospital" }, 
-        { lat: 25.274048699665652, lng: 51.50317430926201, name: "Doha Clinic Hospital" }, 
-        { lat: 25.259037060172627, lng: 51.555869328490324, name: "Aster Hospital" },
-        { lat: 25.291757784353518, lng: 51.50795436693438, name: "Communicable Disease Center" },  
-        { lat: 25.293948579817577, lng: 51.50372589762116, name: "Hamad General Hospital" }, 
-        { lat: 25.293003326437653, lng: 51.51111595812354, name: "National Center for Cancer Care and Research (NCCCR)" }, 
-        { lat: 25.29413138154947, lng: 51.50850955344194, name: "Qatar Rehabilitation Institute" }, 
-        { lat: 25.293029582401797, lng: 51.51252042275511, name: "Rumeilah Hospital" }, 
-        { lat: 25.181236560880095, lng: 51.4301930957663, name: "Hazm Mebaireek General Hospital" }, 
-    ];
+        // Data for embassies
+        const embassies = [
+            { lat: 25.318408313192162, lng: 51.5266888932534, name: "Austria" },
+            { lat: 25.322960959645204, lng: 51.502974852827386, name: "Belgium" },
+            { lat: 25.330189603499374, lng: 51.5370194932534, name: "France" },
+            { lat: 25.319559974232742, lng: 51.52801260342593, name: "Germany" },
+            { lat: 25.322790999902825, lng: 51.52856181928755, name: "Italy" },
+            { lat: 25.32074225723872, lng: 51.528939911392, name: "Netherlands" },
+            { lat: 25.3605185304801, lng: 51.51600839140423, name: "Poland" },
+            { lat: 25.330619492163617, lng: 51.50626763373303, name: "Romania" },
+            { lat: 25.357769759952202, lng: 51.49936680674661, name: "Spain" },
+            { lat: 25.318532899293565, lng: 51.52731663373302, name: "Sweden" },
+            { lat: 25.34184446566421, lng: 51.51622456441779, name: "United Kingdom" },
+            { lat: 25.354322974234805, lng: 51.514095979760185, name: "Bahrain" },
+            { lat: 25.34715188372122, lng: 51.51734795092458, name: "Egypt" },
+            { lat: 25.3481974589676, lng: 51.519007588894794, name: "Kuwait" },
+            { lat: 25.344103637376712, lng: 51.518197065091975, name: "Lebanon" },
+            { lat: 25.332820307380132, lng: 51.51940447563852, name: "Libya" },
+            { lat: 25.347058091852787, lng: 51.51763063558199, name: "Morocco" },
+            { lat: 25.34480886389817, lng: 51.51899892209018, name: "Oman" },
+            { lat: 25.32765491684833, lng: 51.51772763558198, name: "Palestine" },
+            { lat: 25.330409335558052, lng: 51.536238938572545, name: "Saudi Arabia" },
+            { lat: 25.352831262814426, lng: 51.5183501932541, name: "Syria" },
+            { lat: 25.352463796994986, lng: 51.531159189362654, name: "United Arab Emirates (UAE)" },
+            { lat: 25.336946649416227, lng: 51.49103303558194, name: "Yemen" },
+            { lat: 25.342130401811815, lng: 51.518610119822185, name: "Algeria" },
+            { lat: 25.354833864307643, lng: 51.4979282067459, name: "Kenya" },
+            { lat: 25.323654616915576, lng: 51.504817877909815, name: "Mauritius" },
+            { lat: 25.363289841157357, lng: 51.50157886627053, name: "South Africa" },
+            { lat: 25.34878539045286, lng: 51.51690747842568, name: "Sudan" },
+            { lat: 25.33118928027895, lng: 51.520866122090155, name: "Tunisia" },
+            { lat: 25.319379416867914, lng: 51.52799119510659, name: "Canada" },
+            { lat: 25.30386913445857, lng: 51.47117606256554, name: "United States of America" },
+            { lat: 25.355617313591186, lng: 51.512105762960935, name: "Argentina" },
+            { lat: 25.358210444615104, lng: 51.49669375092625, name: "Brazil" },
+            { lat: 25.319275118798235, lng: 51.5278807914016, name: "Australia" },
+            { lat: 25.280936089930556, lng: 51.551120398617265, name: "New Zealand" }
+        ];
 
-    // Add markers to each group
-    supermarkets.forEach(location => {
-        L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(supermarketsLayer);
-    });
+        // Data for hospitals
+        const hospitals = [
+            { lat: 25.16752239480468, lng: 51.588350855507024, name: "Al Wakrah Hospital" }, 
+            { lat: 25.294512233427533, lng: 51.50975395109598, name: "Hamad Medical City" }, 
+            { lat: 25.716116178332726, lng: 51.515990127536334, name: "Al Khor Hospital" },
+            { lat: 25.308465938776962, lng: 51.49977785125861, name: "Al-Ahli Hospital" }, 
+            { lat: 25.25494602148686, lng: 51.534898249352445, name: "Al Emadi Hospital" }, 
+            { lat: 25.439628083032705, lng: 50.860221324610926, name: "The Cuban Hospital" }, 
+            { lat: 25.274048699665652, lng: 51.50317430926201, name: "Doha Clinic Hospital" }, 
+            { lat: 25.259037060172627, lng: 51.555869328490324, name: "Aster Hospital" },
+            { lat: 25.291757784353518, lng: 51.50795436693438, name: "Communicable Disease Center" },  
+            { lat: 25.293948579817577, lng: 51.50372589762116, name: "Hamad General Hospital" }, 
+            { lat: 25.293003326437653, lng: 51.51111595812354, name: "National Center for Cancer Care and Research (NCCCR)" }, 
+            { lat: 25.29413138154947, lng: 51.50850955344194, name: "Qatar Rehabilitation Institute" }, 
+            { lat: 25.293029582401797, lng: 51.51252042275511, name: "Rumeilah Hospital" }, 
+            { lat: 25.181236560880095, lng: 51.4301930957663, name: "Hazm Mebaireek General Hospital" }
+        ];
 
-    embassies.forEach(location => {
-        L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(embassiesLayer);
-    });
+        // Add markers to each group
+        supermarkets.forEach(location => {
+            L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(supermarketsLayer);
+        });
 
-    hospitals.forEach(location => {
-        L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(hospitalsLayer);
-    });
+        embassies.forEach(location => {
+            L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(embassiesLayer);
+        });
 
-    // Filter map markers
-    function filterMap() {
-        const selectedValue = document.getElementById('filterDropdown').value;
+        hospitals.forEach(location => {
+            L.marker([location.lat, location.lng]).bindPopup(location.name).addTo(hospitalsLayer);
+        });
 
-        supermarketsLayer.removeFrom(map);
-        embassiesLayer.removeFrom(map);
-        hospitalsLayer.removeFrom(map);
+        // Filter map markers
+        function filterMap() {
+            const selectedValue = document.getElementById('filterDropdown').value;
 
-        if (selectedValue === 'supermarkets') supermarketsLayer.addTo(map);
-        if (selectedValue === 'embassies') embassiesLayer.addTo(map);
-        if (selectedValue === 'hospitals') hospitalsLayer.addTo(map);
-        if (selectedValue === 'all') {
-            supermarketsLayer.addTo(map);
-            embassiesLayer.addTo(map);
-            hospitalsLayer.addTo(map);
+            supermarketsLayer.removeFrom(map);
+            embassiesLayer.removeFrom(map);
+            hospitalsLayer.removeFrom(map);
+
+            if (selectedValue === 'supermarkets') supermarketsLayer.addTo(map);
+            if (selectedValue === 'embassies') embassiesLayer.addTo(map);
+            if (selectedValue === 'hospitals') hospitalsLayer.addTo(map);
+            if (selectedValue === 'all') {
+                supermarketsLayer.addTo(map);
+                embassiesLayer.addTo(map);
+                hospitalsLayer.addTo(map);
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
