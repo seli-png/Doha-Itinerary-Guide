@@ -190,9 +190,9 @@
           padding: 8px;
         }
 
-        .slideshow-column img {
+        .slideshow-column img{
             width: 100%; /* Set the width to 100% of the column */
-            height: 150px; /* Set a fixed height for the images */
+            height: 200px; /* Set a fixed height for the images */
             object-fit: cover; /* Ensure the images cover the area without distortion */
         }
         
@@ -200,6 +200,10 @@
         .content {
           background-color: white;
           padding: 10px;
+          height: 350px; /* Set a fixed height for the content boxes */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
 
         @media screen and (max-width: 900px) {
